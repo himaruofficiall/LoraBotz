@@ -4,6 +4,11 @@ import { CommandHandler } from './handlers/CommandHandlers';
 const bot = new TelegramBot('7500207141:AAHPqqLgC_w_kOT91kYlByAFfhzSIrAotZY', { polling: true });
 const commandHandler = new CommandHandler(bot);
 
+declare global {
+  var handler: CommandHandler;
+}
+global.handler = commandHandler;
+
 async function startBot() {
   try {
     await commandHandler.loadCommands();

@@ -1,4 +1,3 @@
-// CommandHandlers.ts
 import TelegramBot from 'node-telegram-bot-api';
 import { CommandType, CommandHelpers } from '../types/Command';
 import { readdirSync, statSync } from 'fs';
