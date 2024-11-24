@@ -3,12 +3,12 @@ import { CommandHelpers, CommandType } from '../types/Command';
 
 export = {
   command: ["menu", "help", "start"],
-  description: "Menampilkan daftar perintah yang tersedia",
+  description: "Displays a list of available commands",
   categories: ["main"],
   run: async (msg: TelegramBot.Message, { bot, command }: CommandHelpers) => {
     try {
       const commands = Array.from(global.handler.getCommands().entries());
-      
+
       const categorizedCommands = new Map<string, CommandType[]>();
       
       commands.forEach(([cmdName, cmdData]) => {
@@ -27,15 +27,15 @@ export = {
         text: category.charAt(0).toUpperCase() + category.slice(1),
         callback_data: `menu_${category}`
       }));
-
       const keyboard: TelegramBot.InlineKeyboardButton[][] = [];
       for (let i = 0; i < categoryButtons.length; i += 2) {
         keyboard.push(categoryButtons.slice(i, i + 2));
       }
-      const menuMessage = `👋 Hai ${msg.from?.first_name}!\n\nBerikut adalah daftar kategori perintah yang tersedia.\nSilakan pilih kategori untuk melihat detail perintah:`;
+      const menuMessage = `👋 Hai ${msg.from?.first_name}${msg.from?.last_name} !\n\nName: LoraBotz\nStatus: Active\n\nHere is a list of available command categories.\nPlease select a category to view command details:`;
       
       await bot.sendMessage(msg.chat.id, menuMessage, {
         reply_to_message_id: msg.message_id,
+        parse_mode: 'Markdown',
         reply_markup: {
           inline_keyboard: keyboard
         }
@@ -47,7 +47,7 @@ export = {
         const category = callbackQuery.data.replace('menu_', '');
         const commands = categorizedCommands.get(category) || [];
         
-        let commandList = `📑 *Daftar Perintah ${category.toUpperCase()}*\n\n`;
+        let commandList = `📑 *Command List ${category.toUpperCase()}*\n\n`;
         
         commands.forEach(cmd => {
           const mainCommand = cmd.command[0];
@@ -55,7 +55,7 @@ export = {
             ? ` (${cmd.command.slice(1).join(', ')})`
             : '';
           const example = cmd.example 
-            ? `\nContoh: /${cmd.example[0].replace('%cmd', mainCommand)}`
+            ? `\nExample: /${cmd.example[0].replace('%cmd', mainCommand)}`
             : '';
             
           commandList += `/${mainCommand}${aliases}\n`;
@@ -63,7 +63,7 @@ export = {
         });
         const backButton = {
           inline_keyboard: [[{
-            text: '⬅️ Kembali ke Menu',
+            text: '⬅️ Back to Menu',
             callback_data: 'menu_back'
           }]]
         };
@@ -89,7 +89,7 @@ export = {
 
     } catch (error) {
       console.error('Error in menu command:', error);
-      bot.sendMessage(msg.chat.id, 'Terjadi kesalahan saat menampilkan menu.');
+      bot.sendMessage(msg.chat.id, 'An error occurred while displaying the menu.');
     }
   }
 };

@@ -5,11 +5,11 @@ import TelegramBot from 'node-telegram-bot-api';
 export = {
   command: ["gpt", "ai"],
   categories: ["ai"],
-  example: ["%cmd"],
-  description: "Tanya apa saja pada AI",
+  example: ["%cmd Question"],
+  description: "Ask Question with AI GPT",
   run: async(msg: TelegramBot.Message, { bot, text, command }: CommandHelpers) => {
     if (!text) {
-      return bot.sendMessage(msg.chat.id, `/${command} pertanyaan nya`);
+      return bot.sendMessage(msg.chat.id, `/${command} Question`);
     }
     
     try {

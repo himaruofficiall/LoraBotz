@@ -4,17 +4,17 @@ import TelegramBot from 'node-telegram-bot-api';
 
 export = {
   command: ["fluxx"],
-  description: "Hasilkan gambar ai Fluxx",
+  description: "Generate image using Fluxx AI",
   categories: ["ai"],
-  example: ["%cmd"],
+  example: ["%cmd Prompt images"],
   run: async(msg: TelegramBot.Message, { bot, text, command, args }: CommandHelpers) => {
     if (!text) {
-      return bot.sendMessage(msg.chat.id, 'Masukan prompt untuk hasilkan gambar', {
+      return bot.sendMessage(msg.chat.id, 'Prompt for generate Images', {
         reply_to_message_id: msg.message_id,
       });
     }
     
-    bot.sendMessage(msg.chat.id, 'Tunggu bentar...');
+    bot.sendMessage(msg.chat.id, 'Please wait...');
     
     try {
       const response = await axios(`https://api.paxsenix.biz.id/ai-image/fluxSchnell?text=${text}`);

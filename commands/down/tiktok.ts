@@ -4,12 +4,12 @@ import TelegramBot from 'node-telegram-bot-api';
 
 export = {
   command: ["tiktok", "tt", "ttmedia"],
-  example: ["%cmd"],
-  description: "Unduh media TikTok",
+  example: ["%cmd link of TikTok"],
+  description: "Fetch media TikTok",
   categories: ["downloader"],
   run: async(msg: TelegramBot.Message, { bot, text, command }:CommandHelpers) => {
     if (!text) {
-      return bot.sendMessage(msg.chat.id, `/${command} link tiktok`);
+      return bot.sendMessage(msg.chat.id, `/${command} Link Of TikTok`);
     }
     bot.sendMessage(msg.chat.id, 'Please Wait...');
     
