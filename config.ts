@@ -1,8 +1,8 @@
 import { TelegramConfig } from './myconfig';
 
 const config: TelegramConfig.BotConfig = {
-  ownerIds: [12345678],
-  moderatorIds: [12345678],
+  ownerIds: [6975695436],
+  moderatorIds: [6975695436],
 }
 
 export default config;
