@@ -38,7 +38,8 @@ export = {
   noPrefix: /*boolean*/,
   config: {
     requireOwner: /*boolean*/,
-    requireModerator: //boolean
+    requireModerator: /*boolean*/,
+    requireAdmin: /*boolean*/
   },
   example: ["%cmd your example here"],
   run: async(msg: TelegramBot.Message, { bot, text, args, command, callbackQuery, isCallback }: CommandHelpers) => {
