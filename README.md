@@ -1,4 +1,4 @@
-# LoraBo# LoraBotz - Open Source Project
+# LoraBotz - Open Source Project
 
 ![Lora Icon](assets/lora.png)
 
