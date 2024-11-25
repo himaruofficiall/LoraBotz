@@ -1,11 +1,12 @@
 import TelegramBot from 'node-telegram-bot-api';
 import { CommandHandler } from './handlers/CommandHandlers';
+import config from './config';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const bot = new TelegramBot(`${process.env.TOKEN_BOT}`, { polling: true });
 
-const commandHandler = new CommandHandler(bot);
+const commandHandler = new CommandHandler(bot, config);
 
 declare global {
    var handler: CommandHandler;
