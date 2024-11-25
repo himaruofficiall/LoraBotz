@@ -8,7 +8,7 @@
 `LoraBotz` is an open source project, based on TypeScript.
 
 ## Instalation
-- First, If you are using Android to run this script, then the recommended application is [Termux](https://github.com/termux/termux-app/releases/tag/) & [Node.js](https://nodejs.org/en). Click on the text on the left to download
+- First, If you are using Android to run this script, then the recommended application is [Termux](https://github.com/termux/termux-app/releases/) & [Node.js](https://nodejs.org/en). Click on the text on the left to download
 - Second, if you have installed everything you need, type the command, Clone this Repository:
 ```sh
 git clone https://github.com/DitzDev/LoraBotz.git
